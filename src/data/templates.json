@@ -1,0 +1,142 @@
+{
+  "templates": [
+    {
+      "id": "barber-pro",
+      "title": "Barber Pro Template",
+      "category": "barbers",
+      "price": 450,
+      "currency": "GBP",
+      "description": "Professional barber shop website with booking system, gallery, and local SEO optimization.",
+      "features": [
+        "Online booking system",
+        "Photo gallery",
+        "Service pricing display",
+        "Local SEO optimized",
+        "Mobile-responsive design",
+        "Contact forms"
+      ],
+      "demoUrl": "https://demo.burchstudio.com/barber-pro",
+      "images": [
+        "/images/templates/barber-pro-1.jpg",
+        "/images/templates/barber-pro-2.jpg"
+      ],
+      "techStack": ["React", "TypeScript", "Tailwind CSS"],
+      "included": [
+        "Template code/files",
+        "Installation support",
+        "5 hours free customization",
+        "60 days free updates",
+        "Domain/hosting setup help",
+        "Documentation"
+      ],
+      "timeline": "7 working days",
+      "stripeProductId": "prod_barber_pro_template"
+    },
+    {
+      "id": "fitness-boost",
+      "title": "Fitness Boost Template",
+      "category": "fitness",
+      "price": 500,
+      "currency": "GBP",
+      "description": "High-converting fitness and personal trainer website with class schedules and client testimonials.",
+      "features": [
+        "Class scheduling",
+        "Trainer profiles",
+        "Client testimonials",
+        "Nutrition blog section",
+        "Membership pricing",
+        "Contact & booking forms"
+      ],
+      "demoUrl": "https://demo.burchstudio.com/fitness-boost",
+      "images": [
+        "/images/templates/fitness-boost-1.jpg",
+        "/images/templates/fitness-boost-2.jpg"
+      ],
+      "techStack": ["React", "TypeScript", "Tailwind CSS"],
+      "included": [
+        "Template code/files",
+        "Installation support",
+        "5 hours free customization",
+        "60 days free updates",
+        "Domain/hosting setup help",
+        "Documentation"
+      ],
+      "timeline": "7 working days",
+      "stripeProductId": "prod_fitness_boost_template"
+    },
+    {
+      "id": "construction-build",
+      "title": "Construction Build Template",
+      "category": "construction",
+      "price": 400,
+      "currency": "GBP",
+      "description": "Professional construction company website showcasing projects and services with quote request forms.",
+      "features": [
+        "Project portfolio",
+        "Service breakdowns",
+        "Quote request forms",
+        "Team profiles",
+        "Testimonials section",
+        "Local area coverage map"
+      ],
+      "demoUrl": "https://demo.burchstudio.com/construction-build",
+      "images": [
+        "/images/templates/construction-build-1.jpg",
+        "/images/templates/construction-build-2.jpg"
+      ],
+      "techStack": ["React", "TypeScript", "Tailwind CSS"],
+      "included": [
+        "Template code/files",
+        "Installation support",
+        "5 hours free customization",
+        "60 days free updates",
+        "Domain/hosting setup help",
+        "Documentation"
+      ],
+      "timeline": "7 working days",
+      "stripeProductId": "prod_construction_build_template"
+    }
+  ],
+  "categories": [
+    {
+      "id": "barbers",
+      "name": "Barbers",
+      "description": "Professional barber shop websites"
+    },
+    {
+      "id": "fitness",
+      "name": "Fitness & Gyms",
+      "description": "Personal trainers and gym websites"
+    },
+    {
+      "id": "construction",
+      "name": "Construction",
+      "description": "Construction and trade businesses"
+    },
+    {
+      "id": "new-business",
+      "name": "New Businesses",
+      "description": "Starting your first business"
+    },
+    {
+      "id": "mortgage",
+      "name": "Mortgage Advisors",
+      "description": "Financial services websites"
+    },
+    {
+      "id": "lead-generation",
+      "name": "Lead Generation",
+      "description": "High-converting lead capture sites"
+    },
+    {
+      "id": "car-detailing",
+      "name": "Car Detailing",
+      "description": "Auto detailing and car care"
+    }
+  ],
+  "priceRanges": [
+    { "id": "under-400", "label": "Under £400", "min": 0, "max": 399 },
+    { "id": "400-500", "label": "£400 - £500", "min": 400, "max": 500 },
+    { "id": "500-600", "label": "£500 - £600", "min": 500, "max": 600 }
+  ]
+}
