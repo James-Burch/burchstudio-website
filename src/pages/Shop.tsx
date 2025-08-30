@@ -95,102 +95,26 @@ const mockTemplateData = {
       stripeProductId: "prod_construction_build_template",
     },
   ],
-  categories: [
-    {
-      id: "barbers",
-      name: "Barbers",
-      description: "Professional barber shop websites",
-    },
-    {
-      id: "fitness",
-      name: "Fitness & Gyms",
-      description: "Personal trainers and gym websites",
-    },
-    {
-      id: "construction",
-      name: "Construction",
-      description: "Construction and trade businesses",
-    },
-    {
-      id: "new-business",
-      name: "New Businesses",
-      description: "Starting your first business",
-    },
-    {
-      id: "mortgage",
-      name: "Mortgage Advisors",
-      description: "Financial services websites",
-    },
-    {
-      id: "lead-generation",
-      name: "Lead Generation",
-      description: "High-converting lead capture sites",
-    },
-    {
-      id: "car-detailing",
-      name: "Car Detailing",
-      description: "Auto detailing and car care",
-    },
-  ],
-  priceRanges: [
-    { id: "under-400", label: "Under £400", min: 0, max: 399 },
-    { id: "400-500", label: "£400 - £500", min: 400, max: 500 },
-    { id: "500-600", label: "£500 - £600", min: 500, max: 600 },
-  ],
 };
 
 const Shop: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [selectedPriceRange, setSelectedPriceRange] = useState("");
-  const [searchTerm, setSearchTerm] = useState("");
+  const [sortOrder, setSortOrder] = useState<
+    "low-to-high" | "high-to-low" | ""
+  >("");
 
-  const { templates, categories, priceRanges } = mockTemplateData;
+  const { templates } = mockTemplateData;
 
-  const filteredTemplates = useMemo(() => {
-    return templates.filter((template) => {
-      // Category filter
-      if (selectedCategory && template.category !== selectedCategory) {
-        return false;
+  const sortedTemplates = useMemo(() => {
+    if (!sortOrder) return templates;
+
+    return [...templates].sort((a, b) => {
+      if (sortOrder === "low-to-high") {
+        return a.price - b.price;
+      } else {
+        return b.price - a.price;
       }
-
-      // Price filter
-      if (selectedPriceRange) {
-        const range = priceRanges.find((r) => r.id === selectedPriceRange);
-        if (
-          range &&
-          (template.price < range.min || template.price > range.max)
-        ) {
-          return false;
-        }
-      }
-
-      // Search filter
-      if (searchTerm) {
-        const searchLower = searchTerm.toLowerCase();
-        return (
-          template.title.toLowerCase().includes(searchLower) ||
-          template.description.toLowerCase().includes(searchLower) ||
-          template.features.some((feature) =>
-            feature.toLowerCase().includes(searchLower)
-          )
-        );
-      }
-
-      return true;
     });
-  }, [
-    templates,
-    selectedCategory,
-    selectedPriceRange,
-    searchTerm,
-    priceRanges,
-  ]);
-
-  const clearFilters = () => {
-    setSelectedCategory("");
-    setSelectedPriceRange("");
-    setSearchTerm("");
-  };
+  }, [templates, sortOrder]);
 
   return (
     <div className="section-padding bg-gray-50 dark:bg-gray-900">
@@ -209,46 +133,18 @@ const Shop: React.FC = () => {
 
         {/* Filters */}
         <ShopFilters
-          categories={categories}
-          priceRanges={priceRanges}
-          selectedCategory={selectedCategory}
-          selectedPriceRange={selectedPriceRange}
-          searchTerm={searchTerm}
-          onCategoryChange={setSelectedCategory}
-          onPriceRangeChange={setSelectedPriceRange}
-          onSearchChange={setSearchTerm}
-          onClearFilters={clearFilters}
+          sortOrder={sortOrder}
+          onSortChange={setSortOrder}
+          resultCount={sortedTemplates.length}
+          totalCount={templates.length}
         />
 
-        {/* Results Count */}
-        <div className="mb-6 text-gray-600 dark:text-gray-400">
-          Showing {filteredTemplates.length} of {templates.length} templates
-        </div>
-
         {/* Templates Grid */}
-        {filteredTemplates.length > 0 ? (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            {filteredTemplates.map((template) => (
-              <TemplateCard key={template.id} template={template} />
-            ))}
-          </div>
-        ) : (
-          <div className="text-center py-16">
-            <div className="text-6xl mb-4">🔍</div>
-            <h3 className="text-2xl font-bold mb-4 text-brand-charcoal dark:text-white">
-              No templates found
-            </h3>
-            <p className="text-gray-600 dark:text-gray-300 mb-6">
-              Try adjusting your filters or search terms
-            </p>
-            <button
-              onClick={clearFilters}
-              className="bg-brand-navy text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              Clear All Filters
-            </button>
-          </div>
-        )}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {sortedTemplates.map((template) => (
+            <TemplateCard key={template.id} template={template} />
+          ))}
+        </div>
 
         {/* Call to Action */}
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 text-center">
