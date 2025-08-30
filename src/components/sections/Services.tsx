@@ -49,7 +49,7 @@ const Services: React.FC = () => {
 
   return (
     <section className="section-padding bg-gray-50 dark:bg-gray-800">
-      <div className="container">
+      <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-brand-charcoal dark:text-white">
             How We Help Your Business Grow
@@ -61,7 +61,7 @@ const Services: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid lg:grid-cols-3 gap-8 mb-16 max-w-6xl mx-auto">
           {services.map((service, index) => (
             <div
               key={index}
@@ -100,11 +100,11 @@ const Services: React.FC = () => {
         </div>
 
         {/* Process Section */}
-        <div className="text-center">
+        <div className="text-center max-w-6xl mx-auto">
           <h3 className="text-3xl font-bold mb-8 text-brand-charcoal dark:text-white">
             Our Simple Process
           </h3>
-          <div className="grid md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-4 gap-6">
             <div className="text-center">
               <div className="w-12 h-12 bg-brand-navy text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
                 1
